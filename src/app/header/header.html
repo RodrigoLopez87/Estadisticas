@@ -1,0 +1,28 @@
+<mat-toolbar class="custom-toolbar">
+
+  <!-- Usuario logeado a la izquierda -->
+  <div class="user-info">
+    Rodrigo Lopez
+  </div>
+
+  <!-- Icono a la derecha con menú -->
+  <button
+    mat-icon-button
+    class="notification-icon"
+    [matMenuTriggerFor]="userMenu"
+    aria-label="User menu"
+  >
+    <i class="fa fa-user-circle close-icon"></i>
+  </button>
+
+  <!-- Menú desplegable -->
+  <mat-menu #userMenu="matMenu">
+    <button mat-menu-item>
+      <span>Cuenta</span>
+    </button>
+    <button mat-menu-item>
+      <span>Cerrar sesión</span>
+    </button>
+  </mat-menu>
+
+</mat-toolbar>

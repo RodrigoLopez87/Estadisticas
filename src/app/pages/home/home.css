@@ -1,0 +1,15 @@
+.card-container {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  /* 
+    - On small screens -> each card takes full width (1fr min 280px).
+    - On larger screens -> cards flow next to each other.
+  */
+}
+
+mat-card {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+}
