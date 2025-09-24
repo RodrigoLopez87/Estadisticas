@@ -1,0 +1,7 @@
+.templateContainer {
+  margin-top: 3rem;
+  padding: 10px;
+  overflow-x: auto;       /* activa scroll horizontal si el contenido se pasa */
+  overflow-y: hidden;     /* opcional: evita scroll vertical */
+  white-space: nowrap;
+}
