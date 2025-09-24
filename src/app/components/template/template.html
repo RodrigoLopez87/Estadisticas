@@ -1,1 +1,24 @@
-<h1>{{templateData().description}}</h1>
+<div class="grid-container">
+<!-- Header row -->
+    <div class="grid-header">Objeto</div>
+    @for (col of columns(); track col.id) {
+    <div class="grid-header">{{ col.description }}</div>
+    }
+
+
+    <!-- Rows for each object -->
+    @for (obj of templateData().objects; track obj.id) {
+    <div class="grid-row obj-name">{{ obj.description }}</div>
+
+
+    @for (col of columns(); track col.id) {
+    <div class="grid-row">
+    <input
+    type="number"
+    [value]="getValue(obj.id, col.id) ?? ''"
+    (input)="setValue(obj.id, col.id, $any($event.target).valueAsNumber)"
+    />
+    </div>
+    }
+    }
+</div>

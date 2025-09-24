@@ -1,0 +1,37 @@
+.grid-container {
+display: grid;
+grid-template-columns: 200px repeat(auto-fill, minmax(120px, 1fr));
+border: 1px solid #ccc;
+overflow-x: auto;
+}
+
+
+.grid-header {
+font-weight: bold;
+background: #f3f3f3;
+padding: 0.5rem;
+border: 1px solid #ddd;
+text-align: center;
+}
+
+
+.grid-row {
+border: 1px solid #ddd;
+padding: 0.25rem;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+
+.obj-name {
+font-weight: 500;
+background: #fafafa;
+}
+
+
+input[type='number'] {
+width: 100%;
+padding: 0.25rem;
+box-sizing: border-box;
+}
