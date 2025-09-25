@@ -14,22 +14,26 @@ export class TemplatesPage {
   id: 1,
   description: "Control de stock",
   objects: [
-    {
-      id: 101,
-      description: "Caja de herramientas",
-      movimientos: [
-        { id: 1, description: "Compra inicial", amount: 10 },
-        { id: 2, description: "Uso en obra", amount: -2 }
-      ]
-    },
-    {
-      id: 102,
-      description: "Tornillos",
-      movimientos: [
-        { id: 3, description: "Reposición", amount: 200 },
-        { id: 4, description: "Consumo diario", amount: -30 }
-      ]
-    }
-  ]
-};
+      {
+        id: 101,
+        description: "Objeto1",
+        movimientos: [
+          { id: 1, description: "Entrada", amount: 10 },
+          { id: 2, description: "Salida", amount: 5 },
+          { id: 3, description: "Entrada2", amount: 10 },
+          { id: 4, description: "Salida2", amount: 5 }
+        ]
+      },
+      {
+        id: 102,
+        description: "Objeto2",
+        movimientos: [
+          { id: 1, description: "Entrada", amount: 10 },
+          { id: 2, description: "Salida", amount: 5 },
+          { id: 3, description: "Entrada2", amount: 10 },
+          { id: 4, description: "Salida2", amount: 5 }
+        ]
+      }
+    ]
+  };
 }

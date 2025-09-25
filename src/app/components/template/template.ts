@@ -1,7 +1,6 @@
-import { Component, input, signal, computed } from '@angular/core';
+import { Component, input, signal, computed, OnInit } from '@angular/core';
 import { TemplateData } from 'src/app/models/template';
-import { Movement } from 'src/app/models/movement';
-import { Objeto } from 'src/app/models/objeto';
+import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-template',
@@ -9,54 +8,33 @@ import { Objeto } from 'src/app/models/objeto';
   templateUrl: './template.html',
   styleUrls: ['./template.scss']
 })
-export class Template {
+export class Template implements OnInit {
   templateData = input.required<TemplateData>();
-
+  headers : string[] = [];
+  headersCounter = 0;
+  footers : string[] = [];
   private valuesSignal = signal(new Map<number, Map<number, number>>());
 
+  ngOnInit() {
+    this.headers = ["Objeto"];
 
-  readonly columns = computed(() => {
-  const colsMap = new Map<number, Movement>();
-  for (const obj of this.templateData().objects || []) {
-  for (const mov of obj.movimientos || []) {
-  if (!colsMap.has(mov.id)) colsMap.set(mov.id, mov);
-  }
-  }
-  return Array.from(colsMap.values());
-  });
+    // si hay al menos un objeto, tomar sus movimientos
+    if (this.templateData().objects.length > 0) {
+      const primerObjeto = this.templateData().objects[0];
+      const movimientos = primerObjeto.movimientos.map(m => m.description);
+      this.headers.push(...movimientos);
+    }
+    this.headers.push("Total");
+    this.headersCounter = this.headers.length;
 
-
-  getValue(objId: number, movId: number): number | null {
-  const map = this.valuesSignal();
-  const row = map.get(objId);
-  return row?.get(movId) ?? null;
-  }
-
-
-  setValue(objId: number, movId: number, value: number | null) {
-  const map = new Map(this.valuesSignal());
-  const row = new Map(map.get(objId) ?? undefined);
-
-
-  if (value === null || Number.isNaN(value)) {
-  row.delete(movId);
-  } else {
-  row.set(movId, value);
+    this.footers = ["Totales"];
+    if (this.templateData().objects.length > 0) {
+      const primerObjeto = this.templateData().objects[0];
+      const movimientos = primerObjeto.movimientos.map(m => m.description);
+      this.footers.push(...movimientos);
+    }
+    this.footers.push("");
   }
 
-  if (row.size > 0) map.set(objId, row);
-  else map.delete(objId);
-
-  this.valuesSignal.set(map);
-  }
-
-  getAllValues() {
-  const out: Record<number, Record<number, number>> = {};
-  for (const [objId, row] of this.valuesSignal().entries()) {
-  out[objId] = {};
-  for (const [movId, val] of row.entries()) out[objId][movId] = val;
-  }
-  return out;
-  }
 
 }

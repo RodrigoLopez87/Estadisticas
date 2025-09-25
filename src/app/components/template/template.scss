@@ -1,37 +1,18 @@
-.grid-container {
-display: grid;
-grid-template-columns: 200px repeat(auto-fill, minmax(120px, 1fr));
-border: 1px solid #ccc;
-overflow-x: auto;
+.container {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr); /* 8 columnas iguales */
+  gap: 0.5rem; /* opcional, separación entre celdas */
 }
-
-
-.grid-header {
-font-weight: bold;
-background: #f3f3f3;
-padding: 0.5rem;
-border: 1px solid #ddd;
-text-align: center;
-}
-
 
 .grid-row {
-border: 1px solid #ddd;
-padding: 0.25rem;
-display: flex;
-align-items: center;
-justify-content: center;
+  display: contents; /* hace que cada hijo se ubique directamente en la grilla */
 }
 
-
-.obj-name {
-font-weight: 500;
-background: #fafafa;
+.cell-title {
+  font-weight: bold;
+  grid-column: span 1; /* ocupa 1 fracción (una columna) */
 }
 
-
-input[type='number'] {
-width: 100%;
-padding: 0.25rem;
-box-sizing: border-box;
+.cell-content {
+  color: blue;
 }

@@ -1,24 +1,34 @@
-<div class="grid-container">
-<!-- Header row -->
-    <div class="grid-header">Objeto</div>
-    @for (col of columns(); track col.id) {
-    <div class="grid-header">{{ col.description }}</div>
-    }
+<div style="display: grid; gap: 0.5rem;"
+  [style.grid-template-columns]="'repeat(' + headersCounter + ', 1fr)'">
 
-
-    <!-- Rows for each object -->
-    @for (obj of templateData().objects; track obj.id) {
-    <div class="grid-row obj-name">{{ obj.description }}</div>
-
-
-    @for (col of columns(); track col.id) {
     <div class="grid-row">
-    <input
-    type="number"
-    [value]="getValue(obj.id, col.id) ?? ''"
-    (input)="setValue(obj.id, col.id, $any($event.target).valueAsNumber)"
-    />
+        @for (header of headers; track header) {
+            <div class="cell-title">
+                {{ header }}
+            </div>
+        }
     </div>
+    @for (obj of templateData().objects; track obj.id) {
+        <div class="grid-row">
+            <div class="cell-title">
+                {{ obj.description }}
+            </div>
+            @for (mov of obj.movimientos; track mov.id) {
+                <div class="cell-content">
+                    {{ mov.amount }}
+                </div>
+            }
+            <div class="cell-title">
+                {{  obj.description }} 
+            </div>
+        </div>
     }
-    }
+    <div class="grid-row">
+        @for (footer of footers; track footer) {
+            <div class="cell-title">
+                {{ footer }}
+            </div>
+        }
+    </div>
+
 </div>
