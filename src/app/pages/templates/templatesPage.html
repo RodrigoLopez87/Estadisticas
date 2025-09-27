@@ -1,4 +1,11 @@
-<h1>templates</h1>
+<h1>Plantilla</h1>
 <div class="templateContainer">
-  <app-template [templateData]="templateData"></app-template>
+  <app-template [(templateData)]="templateData"></app-template>
+</div>
+
+<div style="margin-top: 5rem;">
+  <button (click)="onPrint()">Imprimir</button>
+</div>
+<div style="margin-top: 1rem;">
+  <p>{{newTemplateData}}</p>
 </div>

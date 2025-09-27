@@ -15,4 +15,13 @@
 
 .cell-content {
   color: blue;
+
+  .cell-input {
+    width: 100%;
+    padding: 0.25rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: right;
+  }
 }
+

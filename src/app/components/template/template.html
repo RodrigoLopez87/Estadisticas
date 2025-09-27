@@ -8,27 +8,37 @@
             </div>
         }
     </div>
-    @for (obj of templateData().objects; track obj.id) {
+    @for (obj of templateData().objects; track obj.id; let i = $index) {
         <div class="grid-row">
             <div class="cell-title">
                 {{ obj.description }}
             </div>
             @for (mov of obj.movimientos; track mov.id) {
                 <div class="cell-content">
-                    {{ mov.amount }}
+                    <input 
+                        type="number"
+                        class="cell-input"
+                        [value]="mov.amount"
+                        (input)="updateAmount(obj.id, mov.id, $event.target.value)"
+                    />
                 </div>
             }
             <div class="cell-title">
-                {{  obj.description }} 
+                {{ objectTotals()[i] }}
             </div>
         </div>
     }
+    <!-- Footer de totales por movimiento -->
     <div class="grid-row">
-        @for (footer of footers; track footer) {
-            <div class="cell-title">
-                {{ footer }}
-            </div>
+        <div class="cell-title">Totales</div>
+
+        @for (total of movementTotals(); track $index) {
+        <div class="cell-title">
+            {{ total }}
+        </div>
         }
+
+        <div class="cell-title"></div>
     </div>
 
 </div>
