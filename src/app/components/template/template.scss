@@ -10,18 +10,41 @@
 
 .cell-title {
   font-weight: bold;
+  height: 3rem;
   grid-column: span 1; /* ocupa 1 fracción (una columna) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.total-column {
+  height: 3rem;
+  grid-column: span 1; /* ocupa 1 fracción (una columna) */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* línea divisoria */
+}
+
+.cell-footer {
+  margin-top: 1rem;
+  grid-column: span 1; /* ocupa 1 fracción (una columna) */
+  padding-right: 2rem;
+  height: 3rem;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .cell-content {
-  color: blue;
 
   .cell-input {
     width: 100%;
-    padding: 0.25rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    height: 3rem;
+    padding: 1rem;
+    border: none;                 // eliminamos todos los bordes
+    border-bottom: 1px solid #ccc; // solo la línea inferior
+    border-radius: 0;              // sin bordes redondeados
     text-align: right;
+    outline: none;
   }
 }
 
