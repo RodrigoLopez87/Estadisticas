@@ -1,4 +1,4 @@
-@import 'variables';
+@use 'variables';
 
 // Header ocupa todo el ancho y fijo
 .app-header {
@@ -6,8 +6,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: $header-height; // ajustá a la altura de tu header
-  background-color: $primary-color;
+  height: variables.$header-height; // ajustá a la altura de tu header
+  background-color: variables.$primary-color;
   z-index: 1000; // para que esté por encima de todo
 }
 
@@ -23,8 +23,8 @@
   .app-content {
     flex: 1; // ocupa el resto del espacio
     padding: 1rem;
-    margin-top: $header-height;
-    margin-left: $navbar-collapsed-width; // ajustá según el ancho del sidebar
+    margin-top: variables.$header-height;
+    margin-left: variables.$navbar-collapsed-width; // ajustá según el ancho del sidebar
     
     overflow-y: auto; // scroll si es necesario
     height: 100%;

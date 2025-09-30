@@ -1,7 +1,7 @@
-@import '../variables';
+@use '../variables';
 
 .custom-toolbar {
-  background-color: $primary-color;
+  background-color: variables.$primary-color;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,7 +28,7 @@
     font-size: 2rem;
 
     &:hover {
-      color: $fourth-color;
+      color: variables.$fourth-color;
     }
   }
 }
